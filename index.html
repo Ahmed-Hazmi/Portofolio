@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CPIT-455 Software Engineering II Portfolio - HIMMA Curriculum">
+    <title>Portfolio | [Ahmed] — CPIT-455</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning-bg: #fffbeb;
+            --warning-border: #fcd34d;
+            --warning-text: #92400e;
+            --instructor-bg: #fef3c7;
+            --instructor-border: #fbbf24;
+            --instructor-text: #92400e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        header .tagline {
+            background: var(--accent);
+            color: var(--dark);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+        }
+
+        nav {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent);
+        }
+
+        /* Section Styles */
+        section {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: var(--dark);
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        section h3 {
+            color: var(--dark);
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1em;
+            margin: 15px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        /* Card Styles */
+        .card {
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        /* Badge Styles */
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge.accent {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .badge.success {
+            background: var(--success);
+        }
+
+        /* Photo Section */
+        .photo-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-section img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .photo-section .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px dashed var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            color: var(--secondary);
+            font-weight: 600;
+            background: #f1f5f9;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-item {
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .stat-item span {
+            color: var(--accent);
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        /* Evidence Cards */
+        .evidence-card {
+            border-left: 5px solid var(--primary);
+            background: #f8fafc;
+            margin-bottom: 25px;
+        }
+
+        .evidence-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .evidence-card .week-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .evidence-card .topic {
+            color: var(--secondary);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .evidence-card .evidence-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        /* Instructor Only Section */
+        .instructor-only {
+            background: var(--instructor-bg);
+            border: 2px solid var(--instructor-border);
+            color: var(--instructor-text);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .instructor-only strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--warning-bg);
+            border: 2px dashed var(--warning-border);
+            color: var(--warning-text);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn.accent {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn.accent:hover {
+            background: #d97706;
+        }
+
+        .btn.success {
+            background: var(--success);
+        }
+
+        .btn.success:hover {
+            background: #059669;
+        }
+
+        /* Project Section Specific */
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .metric-card h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .metric-card p {
+            font-size: 0.9em;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        /* Reflection Section */
+        .reflection-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .reflection-card h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .reflection-card blockquote {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background: #334155;
+        }
+
+        .contact-btn.linkedin { background: #0077b5; }
+        .contact-btn.github { background: #333; }
+        .contact-btn.email { background: var(--primary); }
+        .contact-btn.cv { background: var(--success); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--secondary);
+            border-top: 1px solid #e2e8f0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer .himma-badge {
+            display: inline-block;
+            background: var(--dark);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* Placeholder Text */
+        .placeholder {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* Privacy Notice */
+        .privacy-notice {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            color: #92400e;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            margin: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 25px 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                max-width: 300px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                max-width: 100%;
+            }
+
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            nav, .btn, .contact-btn {
+                display: none;
+            }
+
+            .instructor-only {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER SECTION -->
+    <!-- ============================================ -->
+    <header>
+        <h1>Portfolio | Ahmed Fouad Al-Hazmi</h1>
+        <p class="subtitle">ID: 2339831 · CPIT-455 Software Engineering II · HIMMA Curriculum</p>
+        <div class="tagline">🔷 BUILD YOUR PROOF</div>
+        <nav>
+            <a href="#about">👤 About</a>
+            <a href="#evidence">📂 Evidence</a>
+            <a href="#project">🚀 Project</a>
+            <a href="#reflection">🧠 Reflection</a>
+            <a href="#contact">🤝 Contact</a>
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- SECTION 01: ABOUT ME -->
+    <!-- ============================================ -->
+    <section id="about">
+        <h2>👤 About Me</h2>
+        <div class="grid">
+            <div>
+                <p>I am a senior Information Technology student at <span class="placeholder">King Abdulaziz University</span> in Jeddah, currently completing <strong>CPIT-455 Software Engineering II</strong>.</p>
+                <p>My academic focus centers on building reliable, high-performance architectures. I aim to design systems that are secure, scalable, and engineered to prevent failure in critical environments.</p>
+                <p>This portfolio is a documented track record of my engineering methodologies, showcasing my shift from theoretical concepts to provable architectural decisions.</p>
+                
+                <div class="stats-bar">
+                    <div class="stat-item"><span>16</span> Weeks</div>
+                    <div class="stat-item"><span>V2</span> Iteration</div>
+                    <div class="stat-item"><span>3</span> Lectures/Week</div>
+                    <div class="stat-item"><span>1</span> Project</div>
+                </div>
+
+                <h3>🎓 Academic Information</h3>
+                <ul>
+                    <li><strong>University:</strong> <span class="placeholder">King Abdulaziz University (KAU)</span></li>
+                    <li><strong>Major:</strong> <span class="placeholder">Information Technology (Senior Year)</span></li>
+                    <li><strong>Year:</strong> <span class="placeholder">2026 — Second Semester</span></li>
+                    <li><strong>Course:</strong> CPIT-455 Software Engineering II</li>
+                    <li><strong>Domain Focus:</strong> Distributed Systems & Software Dependability</li>
+                </ul>
+            </div>
+
+            <div class="photo-section">
+                <!-- Add your photo path here -->
+                <img src="Me.png"
+     alt="Ahmed Al-Hazmi">
+                
+                <h3>🛠 Technical Skills</h3>
+                <div>
+                    <span class="badge">System Architecture</span>
+                    <span class="badge">Fault Tolerance</span>
+                    <span class="badge">Risk Mitigation</span>
+                    <span class="badge">Java</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">UML Modeling</span>
+                    <span class="badge">V&V Testing</span>
+                    <span class="badge">Microservices</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 02: WEEKLY EVIDENCE -->
+    <!-- ============================================ -->
+    <section id="evidence">
+        <h2>📂 Weekly Evidence</h2>
+        <p><em>Documenting the weekly application of software engineering principles through specific, real-world system modeling.</em></p>
+
+        <!-- WEEK 01 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 01</span>
+            <h3>CLASS 00 · The HIMMA System</h3>
+            <p class="topic"><strong>Topics:</strong> Evidence, Portfolio, Iteration, H-Stack Mindset</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <ul>
+                    <li><strong>Continuous Iteration:</strong> The HIMMA system replaces the traditional "cram and forget" approach with a V1-to-V2 feedback loop, allowing me to focus entirely on mastery rather than just passing an exam.</li>
+                    <li><strong>Market Readiness:</strong> Building this portfolio translates academic assignments into tangible, professional evidence that can be presented to future employers in the Saudi tech sector.</li>
+                    <li><strong>Fearless Learning:</strong> Getting constructive feedback on V1 removes the fear of failure and encourages deeper exploration of complex engineering topics.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- WEEK 02 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 02</span>
+            <h3>CLASS 01 · Domain Spine: Dependability</h3>
+            <p class="topic"><strong>Topics:</strong> 5 Attributes, Sources of Failure</p>
+            <div class="evidence-box" style="border-left: 4px solid #2c5282;">
+                <h4>My Evidence (V2):</h4>
+                <h5>Selected System: Haramain High-Speed Railway Ticketing System</h5>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Required Dependability Attributes</strong></h5>
+                    <ul>
+                        <li><strong>Availability:</strong> Passengers must be able to book and access tickets 24/7 without downtime.</li>
+                        <li><strong>Reliability:</strong> The system must never double-book a seat or drop a confirmed reservation.</li>
+                        <li><strong>Security:</strong> Payment gateways and passenger identification data must be encrypted.</li>
+                        <li><strong>Safety:</strong> Incorrect passenger manifests must not cause operational hazards.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>System Risks Matrix</strong></h5>
+                    <ul>
+                        <li><strong>Hardware:</strong> Server outages during peak holiday booking seasons (e.g., Ramadan).</li>
+                        <li><strong>Software:</strong> Database lockups due to high concurrent transactions.</li>
+                        <li><strong>Operational:</strong> Network disconnects at terminal scanning gates.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Architectural Strategy</strong></h5>
+                    <ul>
+                        <li><strong>Redundancy:</strong> Distributed cloud servers to handle traffic spikes.</li>
+                        <li><strong>Security:</strong> Implementation of strict multi-factor authentication for admin panels.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 03 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 03</span>
+            <h3>CLASS 02 · Reliability Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Fault → Error → Failure, Metrics (POFOD, ROCOF)</p>
+            <div class="evidence-box" style="border-left: 4px solid #2c5282;">
+                <h4>My Evidence (V2):</h4>
+                <h5>System: Emergency Medical Dispatch Center (997)</h5>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>System Profile</strong></h5>
+                    <ul>
+                        <li><strong>Users:</strong> Dispatch operators and emergency paramedics.</li>
+                        <li><strong>Usage Pattern:</strong> High-stakes, unpredictable bursts of critical communications.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Chosen Metric: POFOD (Probability of Failure on Demand)</strong></h5>
+                    <ul>
+                        <li><strong>Justification:</strong> For an emergency dispatch system, it does not matter how long the system runs without issues (ROCOF); what matters is that it <em>must</em> work the exact moment an emergency call is received. A failure upon demand translates directly to a loss of life.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Proposed Strategy: N-Version Programming</strong></h5>
+                    <ul>
+                        <li>To ensure the dispatch routing logic never fails, the core routing module will be built using N-Version programming. Multiple independent algorithms will calculate the nearest ambulance, and a voting system will ensure the correct route is dispatched even if one software version encounters a fault.</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    ```html
+<div style="margin-top:20px;">
+<pre style="
+background:#f8fafc;
+padding:20px;
+border-radius:8px;
+overflow-x:auto;
+font-family:'Courier New', monospace;
+font-size:13px;
+line-height:1.3;
+text-align:left;
+">
+            +-------------------+
+            | Routing Request   |
+            |   (Call 997)      |
+            +-------------------+
+                     |
+            +---------+---------+
+            |         |         |
+            v         v         v
++-------------+ +-------------+ +-------------+
+| Version 1   | | Version 2   | | Version 3   |
+| (Algorithm) | | (Algorithm) | | (Algorithm) |
++-------------+ +-------------+ +-------------+
+            |         |         |
+            +---------+---------+
+          |
+            +-------------------+
+            |      Voter        |
+            | (Majority Rule)   |
+            +-------------------+
+                    |
+            +-------------------+
+            |   Final Route     |
+            |    Dispatched     |
+            +-------------------+
+</pre>
+</div>
+```
+
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 04 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 04</span>
+            <h3>CLASS 03 · Safety Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Hazard → Accident, ALARP, Fault Tree Analysis</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Automated Medical Infusion Pump</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>1. Hazard Identification</strong></h5>
+                    <ul>
+                        <li><strong>Component:</strong> Medication dosage calculator.</li>
+                        <li><strong>Hazard:</strong> Administering a dose of insulin that exceeds the safe physiological limit.</li>
+                        <li><strong>Potential Accident / Damage:</strong> Severe patient hypoglycemia leading to coma or death.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>2. Risk Assessment</strong></h5>
+                    <ul>
+                        <li><strong>Probability:</strong> Low (Requires multiple software/sensor failures).</li>
+                        <li><strong>Severity:</strong> Catastrophic (Loss of life).</li>
+                        <li><strong>Verdict:</strong> <strong>Intolerable.</strong> Requires hardcoded hardware limits to mitigate.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>3. Safety Requirement</strong></h5>
+                    <blockquote style="margin: 10px 0; padding: 10px 15px; border-left: 4px solid #cd0000; background-color: #fafafa;">
+                        <strong>SR1:</strong> The system <strong>shall not</strong> permit the delivery of medication exceeding the hardcoded maximum hourly threshold, regardless of user input or sensor requests.
+                    </blockquote>
+                </div>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    ```html
+<div style="margin-top:20px;">
+<pre style="
+background:#f8fafc;
+padding:20px;
+border-radius:8px;
+overflow-x:auto;
+font-family:'Courier New', monospace;
+font-size:13px;
+line-height:1.3;
+text-align:left;
+">
+                    [Insulin Overdose]
+                    (Top Level Hazard)
+                             |
+                           (OR)
+                             |
+              +--------------+--------------+
+              |                             |
+              v                             v
+   [Hardware Malfunction]       [Software Failure]
+              |                             |
+            (OR)                          (AND)
+              |                             |
+      +-------+-------+             +-------+-------+
+      |               |             |               |
+      v               v             v               v
+[Sensor Misreads  [Pump Valve   [Calculation   [Safety Limit
+ Glucose Level]    Stuck Open]   Logic Error]    Bypassed]
+</pre>
+</div>
+```
+
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 05 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 05</span>
+            <h3>CLASS 04 · Security Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> CIA Triad, Security Assurance Case, Misuse Cases</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2): National Citizen Identity Portal (Nafath-style)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>1. System Description & Threat Analysis</strong></h5>
+                    <ul>
+                        <li><strong>Asset:</strong> Centralized citizen identification records.</li>
+                        <li><strong>Threat Vector:</strong> Session hijacking and phishing attacks attempting to bypass authentication.</li>
+                        <li><strong>Misuse Case:</strong> An attacker intercepts a valid user token on a public network to impersonate a citizen and authorize fraudulent government services.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>2. Design Rationale (Zero-Trust Architecture)</strong></h5>
+                    <ul>
+                        <li><strong>Vulnerability Avoidance:</strong> Enforcing strict Time-to-Live (TTL) limits on authentication tokens (e.g., 5-minute expiry).</li>
+                        <li><strong>Compartmentalization:</strong> Implementing biometric multi-factor authentication (MFA) for every new service request, ensuring a stolen password alone is useless.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>3. Verification & Validation</strong></h5>
+                    <ul>
+                        <li><strong>Penetration Testing:</strong> Simulating Man-in-the-Middle (MITM) attacks to verify that TLS 1.3 encryption prevents token extraction.</li>
+                        <li><strong>Audit Trails:</strong> Automated logging of all login attempts to detect and block brute-force patterns instantly.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 06 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 06</span>
+            <h3>CLASS 05 · Resilience Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Recognition & Resistance, Decoupling, Sociotechnical Factors</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Cloud-Based Airline Booking Engine</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>1. Failure Chain Analysis</strong></h5>
+                    <ul>
+                        <li><strong>Fault:</strong> A memory leak in the external payment gateway API.</li>
+                        <li><strong>Error:</strong> Booking transactions hang, tying up server resources during a flash sale.</li>
+                        <li><strong>Failure:</strong> The entire reservation database locks up, preventing all customers and ticketing agents from booking flights.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>2. Recognition & Resistance (R&R) Strategy</strong></h5>
+                    <ul>
+                        <li><strong>Recognition:</strong> Implementation of Circuit Breakers that monitor API response times. If times exceed 2 seconds, the circuit trips.</li>
+                        <li><strong>Resistance:</strong> The system stops accepting new payment requests temporarily (Fail-Soft), presenting users with a "Queue" screen while keeping the rest of the site (flight browsing) fully operational.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>3. Human-in-the-Loop Override</strong></h5>
+                    <ul>
+                        <li>If the automated system fails at the airport gate, ticketing agents can switch to a local cached manifest to manually board passengers offline, ensuring operational continuity despite cloud outages.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 07 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 07</span>
+            <h3>CLASS 06 · Software Reuse</h3>
+            <p class="topic"><strong>Topics:</strong> SPL, The Ariane 5 Lesson</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2): Smart City Fleet Management (SPL)</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Software Product Line (SPL) Approach</strong></h5>
+                    <ul>
+                        <li><strong>Core Components:</strong> GPS tracking, user authentication, and data logging are reused across all city departments.</li>
+                        <li><strong>Specialized Components:</strong> Custom modules are swapped depending on the fleet (e.g., siren control for police, route optimization for waste management).</li>
+                        <li><strong>Justification:</strong> SPL drastically reduces development time and ensures all municipal vehicles share a standardized, highly tested security architecture.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Validation & The Ariane 5 Lesson</strong></h5>
+                    <ul>
+                        <li><strong>The Risk:</strong> Reusing a legacy GPS tracking module designed for slow garbage trucks inside high-speed police interceptors could cause data buffer overflows (similar to the Ariane 5 disaster).</li>
+                        <li><strong>The Solution:</strong> Strict boundary fuzzing and invariant testing to ensure reused code can handle the new physical environment's speed and data rate requirements before deployment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 08 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 08</span>
+            <h3>CLASS 07 · Component-Based Software Engineering (CBSE)</h3>
+            <p class="topic"><strong>Topics:</strong> Component Composition, Interface Design</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2): University E-Learning Platform</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Composition Blueprint</strong></h5>
+                    <ul>
+                        <li><strong>C1 (Auth Provider):</strong> Off-the-shelf OAuth module.</li>
+                        <li><strong>C2 (Video Streaming):</strong> Third-party CDN integration.</li>
+                        <li><strong>C3 (Quiz Engine):</strong> Bespoke internal component for customized grading.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Interface Contracts & Validation</strong></h5>
+                    <ul>
+                        <li><strong>IAuth Interface:</strong> <em>Provides</em> secure session tokens; <em>Requires</em> user credentials. The Quiz Engine depends entirely on IAuth to verify student identity.</li>
+                        <li><strong>Mitigation Strategy:</strong> Using the <strong>Adapter Pattern</strong> around third-party components prevents vendor lock-in. If the Auth provider updates their API, only the wrapper needs changing, keeping the core LMS code intact.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 09 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 09</span>
+            <h3>CLASS 08 · Distributed Software Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Client-Server Architecture, Failover, Security</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2): National E-Health Record System</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Distributed Architecture Design</strong></h5>
+                    <ul>
+                        <li><strong>Client Nodes:</strong> Hospital workstation terminals processing UI and local validation.</li>
+                        <li><strong>App Server Nodes:</strong> Regional cloud instances handling business logic.</li>
+                        <li><strong>Data Store Nodes:</strong> Centralized databases with regional shards for speed.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>Failover & Security</strong></h5>
+                    <ul>
+                        <li><strong>Stateless Microservices:</strong> App nodes hold no local state. If a regional server crashes, a load balancer instantly reroutes traffic to a healthy node.</li>
+                        <li><strong>Data-in-Transit:</strong> Enforcing strict mTLS (Mutual TLS) to authenticate node-to-node communication, ensuring patient data cannot be intercepted across the wide area network.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 10 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 10</span>
+            <h3>CLASS 09 · System of Systems & Multi-tier Architecture</h3>
+            <p class="topic"><strong>Topics:</strong> Middleware, Failure Isolation</p>
+            <div class="evidence-box">
+                <h4>My Evidence (V2): E-Commerce Logistics Platform</h4>
+                
+                <div style="margin-top: 15px;">
+                    <h5><strong>Multi-Tier Implementation</strong></h5>
+                    <ul>
+                        <li><strong>Presentation Tier:</strong> Mobile app for delivery drivers.</li>
+                        <li><strong>Application Tier:</strong> Cloud servers running intensive route-matching algorithms. Offloading this from the mobile device saves battery and standardizes performance.</li>
+                        <li><strong>Data Tier:</strong> Inventory and user databases.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h5><strong>The Role of Middleware</strong></h5>
+                    <ul>
+                        <li>Utilizing message queues (like Kafka or RabbitMQ) between the App and Data tiers ensures asynchronous processing. If the database experiences a spike, orders are queued safely in the middleware rather than crashing the driver's app, ensuring complete failure isolation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEKS 11-14 Placeholders -->
+        
+<div class="card evidence-card">
+    <span class="week-badge">WEEKS 11-14</span>
+    <h3>GROUP PHASE & FINAL HARVEST</h3>
+    <div class="evidence-box">
+
+        <h4>Project Integration Evidence</h4>
+        <p>
+            During the group phase, our team designed and documented the
+            MedAlertClinic Medication Management System. We applied software
+            dependability principles including safety, reliability, security,
+            availability, and resilience throughout the system lifecycle.
+        </p>
+
+        <h4>Architecture Design</h4>
+        <ul>
+            <li>Client-Server Architecture using a 3-Tier design.</li>
+            <li>React.js Frontend for Nurses, Doctors, and Administrators.</li>
+            <li>Node.js + Express REST API for business logic.</li>
+            <li>PostgreSQL Database with Firebase Authentication.</li>
+            <li>Firebase Cloud Messaging and SendGrid for notifications.</li>
+        </ul>
+
+        <h4>Dependability Engineering</h4>
+        <ul>
+            <li>Fault Tree Analysis performed for wrong-dose scenarios.</li>
+            <li>Role-Based Access Control (RBAC) and HTTPS protection.</li>
+            <li>Automated backups and audit logging.</li>
+            <li>Primary and backup server strategy for availability.</li>
+        </ul>
+
+        <h4>Testing & Quality Assurance</h4>
+        <ul>
+            <li>Unit testing for medication validation logic.</li>
+            <li>API testing for critical endpoints.</li>
+            <li>Input validation and exception handling verification.</li>
+            <li>Manual integration testing for notification workflows.</li>
+        </ul>
+
+        <h4>Final Reflection</h4>
+        <p>
+            This project demonstrated how software engineering extends beyond
+            coding into architecture, risk analysis, and dependability assurance.
+            The most important lesson was understanding how safety, security,
+            reliability, and availability are interconnected and must be
+            engineered together rather than independently.
+        </p>
+
+    </div>
+</div>
+
+
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 03: THE PROJECT -->
+    <!-- ============================================ -->
+    
+<section id="project">
+    <h2>🚀 The Capstone Project</h2>
+
+    <div style="background:#f0f9ff;border:2px solid #0ea5e9;padding:25px;border-radius:8px;margin:20px 0;">
+        <h3 style="margin-top:0;color:#0369a1;">MedAlertClinic Medication Management System</h3>
+        <p><strong>Domain:</strong> Healthcare — Medical Systems</p>
+        <p><strong>System Type:</strong> Web Application (Client–Server)</p>
+        <p><strong>Team Size:</strong> 5 Members</p>
+        <p>
+            Medication errors remain one of the leading causes of patient harm.
+            MedAlertClinic provides real-time medication tracking, instant alerts,
+            and complete audit trails to support safe medication administration.
+        </p>
+    </div>
+
+    <h3>🎯 Problem Statement</h3>
+    <p>
+        Medication errors such as missed doses, incorrect administration, and delayed reporting
+        can result in serious patient complications.
+    </p>
+
+    <h3>💡 Proposed Solution</h3>
+    <p>
+        A centralized medication management platform that provides live monitoring,
+        automated alerts, medication scheduling, administration tracking, and reporting.
+    </p>
+
+    <h3>👥 Target Users</h3>
+    <ul>
+        <li>Nurses</li>
+        <li>Doctors</li>
+        <li>Hospital Administrators</li>
+    </ul>
+
+    <h3>🏗 System Architecture</h3>
+    <div class="grid">
+        <div class="card">
+            <h4>Client Tier</h4>
+            <ul>
+                <li>React.js Frontend</li>
+                <li>Nurse Dashboard</li>
+                <li>Doctor Reports</li>
+                <li>Admin Panel</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Application Tier</h4>
+            <ul>
+                <li>Node.js + Express REST API</li>
+                <li>Authentication & Sessions</li>
+                <li>Medication Logic</li>
+                <li>Alert Engine</li>
+                <li>Report Generator</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Data Tier</h4>
+            <ul>
+                <li>PostgreSQL Database</li>
+                <li>Firebase Authentication</li>
+                <li>Patient Records</li>
+                <li>Medication Schedules</li>
+                <li>Dose Logs</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>📡 Notification Services</h3>
+    <ul>
+        <li><strong>Firebase Cloud Messaging:</strong> Browser push alerts.</li>
+        <li><strong>SendGrid:</strong> Email notifications.</li>
+    </ul>
+
+    <h3>⚠ Fault Tree Analysis</h3>
+    <p><strong>Critical Failure Scenario:</strong> Patient Receives Wrong Dose</p>
+    <ul>
+        <li>Incorrect Medication Administered</li>
+        <li>System Failure (No Alert Sent)</li>
+        <li>Dose Timing Error</li>
+        <li>Data Entry Error by Nurse</li>
+        <li>Medication DB Out of Sync</li>
+        <li>FCM Service Downtime</li>
+        <li>Server Crash / Overload</li>
+        <li>Clock Sync Failure</li>
+        <li>Nurse Ignores Alert</li>
+    </ul>
+
+    <h3>📊 Dependability Attributes</h3>
+    <div class="project-metrics">
+        <div class="metric-card">
+            <div class="icon">⚕</div>
+            <h4>Safety</h4>
+            <p>MaxDose enforcement, deletion confirmation, and database safety checks.</p>
+        </div>
+        <div class="metric-card">
+            <div class="icon">🔒</div>
+            <h4>Security</h4>
+            <p>HTTPS, encryption at rest, RBAC, and 2FA for administrators.</p>
+        </div>
+        <div class="metric-card">
+            <div class="icon">🛡</div>
+            <h4>Reliability</h4>
+            <p>Daily backups, validation, and exception logging.</p>
+        </div>
+        <div class="metric-card">
+            <div class="icon">⏱</div>
+            <h4>Availability</h4>
+            <p>Primary and backup servers for continuous operation.</p>
+        </div>
+        <div class="metric-card">
+            <div class="icon">🔄</div>
+            <h4>Resilience</h4>
+            <p>PM2 auto-restarts, audit logs, and rate limiting.</p>
+        </div>
+    </div>
+
+    <h3>🔗 Attribute Interconnectivity</h3>
+    <p>
+        Security, availability, reliability, and safety are interconnected.
+        A successful security breach can directly impact the availability and
+        dependability of the entire system.
+    </p>
+</section>
+
+
+    <!-- ============================================ -->
+    <!-- SECTION 04: REFLECTION -->
+    <!-- ============================================ -->
+    <section id="reflection">
+        <h2>🧠 Reflection</h2>
+        
+        <div class="reflection-card">
+            <h4>❓ What changed in how I think?</h4>
+            <blockquote>
+                <p>I transitioned from viewing software as just "writing code" to understanding it as "building architectural proof." Engineering is about anticipating failure and proving, through evidence and documentation, that your system can handle it safely.</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>⚖️ Safety vs Reliability</h4>
+            <blockquote>
+                <p>The realization that a system can function exactly as programmed (Reliable) but still cause catastrophic harm (Unsafe) fundamentally changed my approach. Requirements must be challenged for safety, not just implemented blindly.</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>💼 Professional Carry-over</h4>
+            <blockquote>
+                <p>I will carry the principle of the "Safety Case" into my professional career. Whether I'm building IT infrastructure or working in aviation tech, I now understand that the burden of proving a system is dependable rests entirely on the engineer.</p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 05: CONTACT -->
+    <!-- ============================================ -->
+    
+<section id="contact">
+    <h2>🤝 Let's Connect</h2>
+    <p>
+        I am always interested in discussing software engineering,
+        software architecture, and dependable systems.
+    </p>
+
+    <div class="contact-grid">
+        <a href="https://www.linkedin.com/in/ahmed-alhazmi-71060833b/" class="contact-btn linkedin" target="_blank">💼 LinkedIn</a>
+        <a href="mailto:ahmedfouadhazmi@gmail.com" class="contact-btn email">✉️ Email</a>
+        <a href="https://github.com/Ahmed-Hazmi" class="contact-btn github" target="_blank">💻 GitHub</a>
+    </div>
+</section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="himma-badge">HIMMA | BUILD YOUR PROOF</div>
+        <p>© 2026 — Ahmed Fouad Al-Hazmi (ID: 2339831) · CPIT-455 Portfolio</p>
+        <p>Faculty of Computing and Information Technology, King Abdulaziz University</p>
+    </footer>
+
+</body>
+</html>
